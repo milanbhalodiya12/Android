@@ -1,0 +1,246 @@
+// Main Activity .kt file
+
+package com.example.relative
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.*
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        var btn : Button = findViewById(R.id.button)
+
+        var imgbtn : ImageButton = findViewById(R.id.imageButton2)
+
+        var tglbtn : ToggleButton = findViewById(R.id.toggleButton)
+
+        var imgview : ImageView = findViewById(R.id.imageView)
+
+
+        var str : String
+        
+        btn.setOnClickListener { 
+            Toast.makeText(applicationContext,"Simple Button Clicked", Toast.LENGTH_LONG).show()
+        }
+
+        imgbtn.setOnClickListener {
+            Toast.makeText(applicationContext,"Image  Button Clicked", Toast.LENGTH_LONG).show()
+        }
+
+        tglbtn.setOnClickListener{
+            if (tglbtn.text.equals("OFF"))
+            {
+                imgview.setImageResource(R.drawable.off)
+            }
+            else{
+                imgview.setImageResource(R.drawable.on)
+            }
+        }
+
+        var ch1 :CheckBox = findViewById(R.id.checkBox)
+        var ch2 :CheckBox = findViewById(R.id.checkBox2)
+        var ch3 :CheckBox = findViewById(R.id.checkBox3)
+
+        var textview : TextView = findViewById(R.id.textView)
+
+        ch1.setOnClickListener {
+            str = "Laravel : ${ch1.isChecked} \n Python : ${ch2.isChecked} \n Android : ${ch3.isChecked}"
+            textview.setText(str)
+        }
+        ch2.setOnClickListener {
+            str = "Laravel : ${ch1.isChecked} \n Python : ${ch2.isChecked} \n Android : ${ch3.isChecked}"
+            textview.setText(str)
+        }
+        ch3.setOnClickListener {
+            str = "Laravel : ${ch1.isChecked} \n Python : ${ch2.isChecked} \n Android : ${ch3.isChecked}"
+            textview.setText(str)
+        }
+
+        var rg : RadioGroup = findViewById(R.id.radioGroup)
+        var res : Button = findViewById(R.id.button2)
+        var txt2 : TextView = findViewById(R.id.textView2)
+        rg.setOnCheckedChangeListener { radioGroup, i ->
+            var rb = findViewById<RadioButton>(i)
+            if (rb!=null)
+            {
+                txt2.setText(rb.text)
+            }
+        }
+        res.setOnClickListener {
+            rg.clearCheck()
+            txt2.setText("Select Option")
+        }
+
+
+    }    
+}
+
+
+
+
+// activity_main.xml file
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="308dp"
+        android:layout_marginBottom="633dp"
+        android:text="Button" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="532dp"
+        android:scaleType="center"
+        app:srcCompat="@drawable/img" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="204dp"
+        android:layout_marginBottom="631dp"
+
+        android:text="OFF" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="106dp"
+        android:layout_height="116dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="285dp"
+        android:layout_marginBottom="505dp"
+        app:srcCompat="@drawable/off" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="250dp"
+        android:layout_marginBottom="363dp"
+        android:text="Laravel" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="250dp"
+        android:layout_marginBottom="306dp"
+        android:text="Python" />
+
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="250dp"
+        android:layout_marginBottom="253dp"
+        android:text="Android" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="42dp"
+        android:layout_marginEnd="200dp"
+        android:layout_marginBottom="155dp"
+        android:text=""
+        android:textSize="20dp" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="180dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="250dp">
+
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MCA" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BCA" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Msc IT" />
+
+        <RadioButton
+            android:id="@+id/radioButton5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bsc IT" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="458dp"
+        android:text="Reset" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="200dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginBottom="209dp"
+        android:text="" />
+
+
+</RelativeLayout>
