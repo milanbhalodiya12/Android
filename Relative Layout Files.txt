@@ -1,0 +1,110 @@
+
+// Main Activity File
+package com.example.relative
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.*
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        var btn : Button = findViewById(R.id.button)
+
+        var imgbtn : ImageButton = findViewById(R.id.imageButton2)
+
+        var tglbtn : ToggleButton = findViewById(R.id.toggleButton)
+
+        var imgview : ImageView = findViewById(R.id.imageView)
+        
+        btn.setOnClickListener { 
+            Toast.makeText(applicationContext,"Simple Button Clicked", Toast.LENGTH_LONG).show()
+        }
+
+        imgbtn.setOnClickListener {
+            Toast.makeText(applicationContext,"Image  Button Clicked", Toast.LENGTH_LONG).show()
+        }
+
+        tglbtn.setOnClickListener{
+            if (tglbtn.text.equals("OFF"))
+            {
+                imgview.setImageResource(R.drawable.off)
+
+
+            }
+            else{
+                imgview.setImageResource(R.drawable.on)
+
+            }
+        }
+
+
+    }
+
+    
+    
+    
+}
+
+
+
+
+
+
+
+// activity_main file
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="285dp"
+        android:layout_marginBottom="608dp"
+        android:text="Button" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="497dp"
+        android:scaleType="center"
+        app:srcCompat="@drawable/img" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="199dp"
+        android:layout_marginBottom="544dp"
+
+        android:text="OFF" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="101dp"
+        android:layout_marginBottom="228dp"
+        app:srcCompat="@drawable/off" />
+
+
+</RelativeLayout>
