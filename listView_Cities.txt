@@ -1,0 +1,199 @@
+// main Activity
+
+package com.example.listview
+
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import android.widget.Toast
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        var listView : ListView = findViewById(R.id.listView)
+        var city = arrayOf("Morbi","Rajkot","Surat","Jamnagar","Vadodra")
+        var adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,city)
+        listView.adapter =  adapter
+
+        listView.setOnItemClickListener { adapterView, view, i, l ->
+            var value = listView.getItemAtPosition(i).toString()
+
+            if (value == "Rajkot")
+            {
+                var rjk = Intent(this,rajkot::class.java)
+                startActivity(rjk);
+            }
+            else if (value == "Morbi")
+            {
+                var mor = Intent(this,morbi::class.java)
+                startActivity(mor)
+            }
+            else if (value == "Surat")
+            {
+                var sur = Intent(this,surat::class.java)
+                startActivity(sur)
+            }
+            else if (value == "Jamnagar")
+            {
+                var jam = Intent(this,jamnagar::class.java)
+                startActivity(jam)
+            }
+            else
+            {
+                var vad = Intent(this,vadodra::class.java)
+                startActivity(vad)
+            }
+
+
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//surat Activity
+
+package com.example.listview
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Button
+
+class rajkot : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_rajkot)
+        val backButton: Button = findViewById(R.id.button3)
+        backButton.setOnClickListener {
+            onBackPressed() // This will navigate back to the previous screen
+        }
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//activity_main .xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//activity_surat
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".surat">
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/surat" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="Surat (Gujarati: [suɾət]) is a city in the western Indian state of Gujarat. The word Surat directly translates to face in Gujarati and Hindustani. Located on the banks of the river Tapti near its confluence with the Arabian Sea, it used to be a large seaport. It is now the commercial and economic centre of South Gujarat, and one of the largest urban areas of western India. It has well-established diamond and textile industry, and is a major supply centre for apparels and accessories. About 90% of the world's diamonds are cut and polished in Surat.[13][14][15] It is the second largest city in Gujarat after Ahmedabad and the eighth largest city by population and ninth largest urban agglomeration in India. It is the administrative capital of the Surat district."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:text="Go Back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
